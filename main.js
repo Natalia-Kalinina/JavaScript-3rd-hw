@@ -1,4 +1,4 @@
-console.log('Sample JavaScript #3 HW #17');
+// console.log('Sample JavaScript #3 HW #17');
 
 /*
  * #1
@@ -8,22 +8,28 @@ console.log('Sample JavaScript #3 HW #17');
  * если число передано в функцию – счет начинается с указанного числа
  * если нет – то счет продолжается
  */
+var counter = (function () {
+    var i = 0;
+    return function (n) {
+        i = n !== undefined ? n : i
+        return i++;
+    };
+}());
+console.log(counter()); // 0
 
-// console.log(counter()); // 0
+console.log(counter()); // 1
 
-// console.log(counter()); // 1
+console.log(counter(100)); // 100
 
-// console.log(counter(100)); // 100
+console.log(counter()); // 101
 
-// console.log(counter()); // 101
+console.log(counter(500)); // 500
 
-// console.log(counter(500)); // 500
+console.log(counter()); // 501
 
-// console.log(counter()); // 501
+console.log(counter(0)); // 0
 
-// console.log(counter(0)); // 0
-
-// console.log(counter()); // 1
+console.log(counter()); // 1
 
 /*
  * #2
