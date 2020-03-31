@@ -42,33 +42,51 @@ console.log(counter()); // 1
  * counting.decrement() – уменьшает значение счетчика на 1
  */
 
-// console.log(counting.value()); // 0
+let counting = (function () {
+    let count = 0;
+  
+    return {
+      value(num) {
+        if (num !== undefined) count = num;
+  
+        return count;
+      },
+      decrement() {
+        count--;
+      },
+      increment() {
+        count++;
+      }
+    };
+  }());
 
-// counting.increment();
+console.log(counting.value()); // 0
 
-// counting.increment();
+counting.increment();
 
-// counting.increment();
+counting.increment();
 
-// console.log(counting.value()); // 3
+counting.increment();
 
-// counting.decrement();
+console.log(counting.value()); // 3
 
-// counting.decrement();
+counting.decrement();
 
-// console.log(counting.value()); // 1
+counting.decrement();
 
-// console.log(counting.value(100)); // 100
+console.log(counting.value()); // 1
 
-// counting.decrement();
+console.log(counting.value(100)); // 100
 
-// console.log(counting.value()); // 99
+counting.decrement();
 
-// console.log(counting.value(200)); // 200
+console.log(counting.value()); // 99
 
-// counting.increment();
+console.log(counting.value(200)); // 200
 
-// console.log(counting.value()); // 201
+counting.increment();
+
+console.log(counting.value()); // 201
 
 /*
  * #3
