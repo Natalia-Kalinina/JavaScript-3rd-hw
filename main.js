@@ -146,7 +146,7 @@ console.log(myPow(2, 3, myPrint)); // 2^3=8
  * - если сеттеру used присвоено значение 'used', ничего делать не нужно
  */
 function fullInfo() { 
-  return `${this.name} ${this.model} ${this.engine}cc ${this.year} ${this.used}`;
+  return `${this.name} ${this.model}, ${this.engine}cc, year ${this.year}, ${this.used}`;
 }
 let yearNow = new Date().getFullYear(); // получить текущий год как число
 
