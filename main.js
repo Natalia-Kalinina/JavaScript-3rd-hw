@@ -100,9 +100,21 @@ console.log(counting.value()); // 201
  * console.log(myPow(2, 3, myPrint)); // 2^3=8
  */
 
-//  console.log(myPow(3, 4, myPrint)); // 3^4=81
+function myPrint(a, b, res){
+  return `${a}^${b}=${res}`;
+}
 
-// console.log(myPow(2, 3, myPrint)); // 2^3=8
+function pow (x,n) {
+  if (n !== 1) { return x *= pow(x,n - 1); }
+    return x;
+  }
+
+  function myPow(a, b, myPrint){
+    return myPrint(a, b, pow(a, b));
+  }
+ console.log(myPow(3, 4, myPrint)); // 3^4=81
+
+console.log(myPow(2, 3, myPrint)); // 2^3=8
 
 /*
  * #4
