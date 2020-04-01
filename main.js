@@ -145,24 +145,56 @@ console.log(myPow(2, 3, myPrint)); // 2^3=8
  * - необходимо изменить год выпуска автомобиля, установив в качестве значения текущий год
  * - если сеттеру used присвоено значение 'used', ничего делать не нужно
  */
+function fullInfo() { 
+  return `${this.name} ${this.model} ${this.engine}cc ${this.year} ${this.used}`;
+}
+let yearNow = new Date().getFullYear(); // получить текущий год как число
 
-// let yearNow = new Date().getFullYear(); // получить текущий год как число
+let car = {
+  engine: 2000,
+  model: 'Lacetti',
+  name: 'Chevrolet',
+  year: 2010,
+  info: fullInfo,
+  get used() {
+    return this.year !== yearNow ? 'used' : 'new';
+  },
 
-// console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2010, used
+  set used(value) {
+    if (value === 'new' && this.year < yearNow) this.year = yearNow;
+  }
+};
 
-// car.used = 'new';
+let car2 = {
+  engine: 5000,
+  model: 'FX50 AWD',
+  name: 'Infinite',
+  year: 2019,
+  info: fullInfo,
+  get used() {
+    return this.year !== yearNow ? 'used' : 'new';
+  },
 
-// console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2019, new -- год изменен
+  set used(value) {
+    if (value === 'new' && this.year < yearNow) this.year = yearNow;
+  }
+};
 
-// car.used = 'used';
+console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2010, used
 
-// console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2019, new -- изменения не выполняются
+car.used = 'new';
 
-// console.log(car2.info()); // Infinite FX50 AWD, 5000cc, year 2019, new
+console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2019, new -- год изменен
 
-// car.used = 'used';
+car.used = 'used';
 
-// console.log(car2.info()); // Infinite FX50 AWD, 5000cc, year 2019, new -- изменения не выполняются
+console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2019, new -- изменения не выполняются
+
+console.log(car2.info()); // Infinite FX50 AWD, 5000cc, year 2019, new
+
+car.used = 'used';
+
+console.log(car2.info()); // Infinite FX50 AWD, 5000cc, year 2019, new -- изменения не выполняются
 
 /*
  * #7
